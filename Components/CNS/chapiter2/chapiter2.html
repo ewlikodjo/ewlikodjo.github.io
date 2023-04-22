@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Security Technology and
+        Principles</title>
+</head>
+<body>
+    <h1>CRYPTOGRAPHIC TOOLS</h1>
+    <h2>Confidentiality with Symmetric Encryption</h2>
+    <p>Symmetric encryption is the most common method used to provide confidentiality for data that is either transmitted or stored. This section provides an introduction to the fundamental concept of symmetric encryption. Additionally, it discusses two key symmetric encryption algorithms, namely the Data Encryption Standard (DES) and the Advanced Encryption Standard (AES), both of which are block encryption algorithms. Lastly, this section presents the concept of symmetric stream encryption algorithms.</p>
+
+    <h3>Symmetric Encryption</h3>
+    <p>Symmetric encryption, which is also known as conventional encryption or single-key encryption, was the sole encryption technique used before the advent of public-key encryption in the late 1970s. Countless individuals and groups, from Julius Caesar to the German U-boat force to present-day diplomatic, military, and commercial users, have employed symmetric encryption to keep their communication confidential. Even today, it remains the more extensively utilized of the two encryption methods.
+        <img src="/home/gato/Desktop/formation/assets/img/Symetric enc key.jpeg"><b>Simplified Model of Symmetric Encryption</b><br>A symmetric encryption scheme has five ingredients:<br>
+        <b>• Plaintext:</b> This is the original message or data that is fed into the algorithm as
+input.<br><b>•Encryption algorithm:</b> The encryption algorithm performs various substitutions
+and transformations on the plaintext.<br><b>•Secret key:</b>The secret key is also input to the encryption algorithm. The exact
+substitutions and transformations performed by the algorithm depend on the
+key.<br><b>•Ciphertext:</b>This is the scrambled message produced as output. It depends on
+the plaintext and the secret key. For a given message, two different keys will
+produce two different ciphertexts.<br>•Decryption algorithm: This is essentially the encryption algorithm run in
+reverse. It takes the ciphertext and the secret key and produces the original
+plaintext.<br><br>
+There are two requirements for secure use of symmetric encryption:<br>
+1. We need a strong encryption algorithm. At a minimum, we would like the
+algorithm to be such that an opponent who knows the algorithm and has
+access to one or more ciphertexts would be unable to decipher the ciphertext
+or figure out the key. This requirement is usually stated in a stronger form:
+The opponent should be unable to decrypt ciphertext or discover the key even
+if he or she is in possession of a number of ciphertexts together with the plaintext that produced each ciphertext.<br>
+2. Sender and receiver must have obtained copies of the secret key in a secure
+fashion and must keep the key secure. If someone can discover the key and
+knows the algorithm, all communication using this key is readable.<br><br>In order to defend against these types of attacks, there are a number of techniques that can be used. One approach is to use longer keys, which make brute-force attacks much more difficult. For example, a 128-bit key is much more secure than a 64-bit key, because there are many more possible keys to try. Another technique is to use block ciphers, which encrypt fixed-size blocks of plaintext at a time. This adds an extra layer of complexity to the encryption process, making it more difficult for attackers to deduce the key.<br>
+
+Another approach is to use a mode of operation that adds randomness to the encryption process. For example, one common mode of operation is called Cipher Block Chaining (CBC), which XORs each block of plaintext with the previous block of ciphertext before encryption. This ensures that even if two blocks of plaintext are identical, they will be encrypted differently, making it more difficult for an attacker to deduce information about the plaintext.<br>
+
+Finally, it is important to keep the key secure. One way to do this is to use key management protocols that ensure that keys are only used for a limited period of time and are changed frequently. Another technique is to use hardware-based security solutions, such as smart cards, which store the key securely and can be used for encryption and decryption operations. Overall, the key to securing symmetric encryption is to use a combination of strong algorithms, long keys, and secure key management practices.
+    </p>
+
+    <h3>Symmetric Block Encryption Algorithms</h3>
+    <p>The most commonly used symmetric encryption algorithms are block ciphers. A
+        block cipher processes the plaintext input in fixed-size blocks and produces a block
+        of ciphertext of equal size for each plaintext block. The algorithm processes longer
+        plaintext amounts as a series of fixed-size blocks. The most important symmetric algorithms, all of which are block ciphers, are the Data Encryption Standard (DES), triple
+        DES, and the Advanced Encryption Standard (AES)<br><br>
+    <b>Data Encryption Standard</b>The Data Encryption Standard (DES) was the encryption scheme most commonly used until recently. It was adopted in 1977 by the National Bureau of Standards, which is now known as the National Institute of Standards and Technology (NIST), under the name Federal Information Processing Standard 46 (FIPS PUB 46). DES uses an algorithm called the Data Encryption Algorithm (DEA), which takes a 64-bit plaintext block and a 56-bit key to produce a 64-bit ciphertext block.<br>There are two main concerns about the strength of DES: the algorithm itself and the use of a 56-bit key. The first concern is the possibility of cryptanalysis by exploiting the characteristics of the DES algorithm. Despite being the most studied encryption algorithm, no fatal weakness in DES has been reported yet, despite numerous attempts to find and exploit weaknesses.<br>The length of the key used in DES, which is 56 bits, is a major concern as there are only 256 possible keys, which is too few to provide adequate security. With the speed of modern computers, a brute-force attack on a 56-bit key is not difficult, as it is estimated that one billion key combinations can be tested per second using a multicore computer. Both Intel and AMD have implemented hardware instructions to speed up the use of AES, and recent tests on multicore Intel machines have resulted in an encryption rate of around half a billion encryptions per second. A recent analysis suggests that with contemporary supercomputer technology, a rate of 1013 encryptions per second is reasonable.<br><img src="/home/gato/Desktop/formation/assets/img/AES-DES table.jpeg"><br>It would take approximately one year for a single PC to break DES encryption. However, if multiple PCs are used in parallel, the time required for breaking the encryption is reduced significantly. Today's supercomputers can find a key in about an hour. Encryption keys with a size of 128 bits or larger are virtually unbreakable using brute force. Even if the speed of the attacking system were increased by a factor of 1 trillion, it would still take more than 100,000 years to break an encryption using a 128-bit key.<br><b>Triple DES</b>Triple DES (3DES) was introduced to extend the life of DES. 3DES involves using the basic DES algorithm three times, with two or three unique keys, resulting in a key size of either 112 or 168 bits. It was initially standardized for use in financial applications in ANSI standard X9.17 in 1985. Later in 1999, 3DES was included as part of the Data Encryption Standard with the release of FIPS PUB 46-3.<br>The use of 3DES is expected to be widespread over the next few years due to two main reasons. Firstly, 3DES has a key length of 168 bits which makes it immune to brute-force attacks, which was a weakness in DES. Secondly, the encryption algorithm used in 3DES is the same as the one used in DES which has undergone rigorous scrutiny for a longer period of time, and no cryptanalytic attack has been found to be effective against it. This leads to a high level of confidence that 3DES is highly resistant to cryptanalysis. Therefore, if security is the only concern, then 3DES can be used as a standardized encryption algorithm for many years to come.<br>The main disadvantage of 3DES is that it is relatively slow when implemented in software. The original DES was designed to be implemented on hardware from the mid-1970s, and therefore it is not optimized for software implementation. As 3DES requires three times more calculations than DES, it is slower accordingly. Another issue is that both DES and 3DES use a block size of 64 bits, which is not considered secure enough and larger block sizes are preferred for efficiency and security reasons.<br><b>Advanced Encryption Standard</b> Due to its drawbacks, 3DES is not a feasible option for long-term usage. Therefore, in 1997, NIST called for proposals for a new encryption standard called the Advanced Encryption Standard (AES). The AES was required to have a security strength equal to or better than 3DES, improved efficiency, and should be a symmetric block cipher with a block length of 128 bits, supporting key lengths of 128, 192, and 256 bits. NIST also considered various evaluation criteria, including security, computational efficiency, memory requirements, hardware and software suitability, and flexibility, while selecting the AES.<br>In the first round of evaluation for a new Advanced Encryption Standard (AES), 15 proposed algorithms were accepted. In the second round, the field was narrowed down to 5 algorithms. NIST then completed its evaluation process and published a final standard (FIPS PUB 197) in November of 2001, with Rijndael being selected as the proposed AES algorithm. AES is now widely available in commercial products.<br><b>Practical Security Issue</b>Symmetric encryption is often used to encrypt data larger than a single block of 64 or 128 bits. In order to encrypt larger data units, such as e-mails, network packets, or database records, the plaintext must be divided into a series of fixed-length blocks. The most basic approach to encrypting multiple blocks is the electronic codebook (ECB) mode. This mode divides the plaintext into blocks of b bits (usually 64 or 128) and encrypts each block with the same key and algorithm. Figure 2.2a shows the ECB mode in action. The plaintext is divided into n blocks (P1, P2, ..., Pn), and each block is encrypted with the same key and algorithm, producing a sequence of ciphertext blocks (C1, C2, ..., Cn).<img src="/home/gato/Desktop/formation/assets/img/Symetric enc types.jpeg">The ECB mode of symmetric encryption may not be secure for lengthy messages. Cryptanalysts may find it easier to decrypt the message by exploiting patterns or regularities in the plaintext. For instance, if the message always begins with specific fields, then the cryptanalyst might have a few known plaintext-ciphertext pairs to use.<br>Modes of operation are techniques developed to improve the security of symmetric block encryption for large sequences of data. They are used to address the weaknesses of the ECB mode. There are different modes of operation, each with its specific advantages.</p>
+    <h3>Stream Ciphers</h3>
+    <h2>Message Authentication and Hash Functions</h2>
+    <h3>Authentication Using Symmetric Encryption</h3>
+    <h3>Message Authentication without Message Encryption</h3>
+    <h3>Secure Hash Functions</h3>
+    <h3>Other Applications of Hash Functions</h3>
+    <h2>Digital Signatures and Key Management</h2>
+    <h3>Public-Key Certificates</h3>
+    <h3>Digital Signature</h3>
+    <h3>Symmetric Key Exchange Using Public-Key Encryption</h3>
+    <h3>Digital Envelopes</h3>
+
+    <h2>Random and Pseudorandom Numbers</h2>
+    <h3>The Use of Random Numbers </h3>
+    <h3>Random versus Pseudorandom</h3>
+
+    <h2>Practical Application: Encryption of Stored Data</h2>
+
+    <h2>Key Terms, Review Questions, and Problems solved</h2>
+
+
+</body>
+</html>
